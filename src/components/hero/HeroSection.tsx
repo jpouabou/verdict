@@ -12,56 +12,68 @@ export function HeroSection() {
       <div className="min-h-[90vh] flex flex-col justify-center pt-24 pb-16">
         <div className="container-narrow px-6">
           <p
-            className="flex items-center gap-2 text-sm font-medium text-violet-300 mb-6 animate-fade-in"
+            className="flex items-center gap-2 text-sm font-medium text-teal-300 mb-6 animate-fade-in"
             style={{ animationDelay: "0.1s" }}
           >
             <IconScale className="w-4 h-4" />
-            Decision engine for founders
+            Stop asking ChatGPT. Get a real verdict.
           </p>
-          <h1
-            className="headline-hero text-white mb-6 animate-fade-in"
+          <div
+            className="flex flex-col lg:flex-row lg:items-center lg:gap-12 xl:gap-16 mb-10 animate-fade-in"
             style={{ animationDelay: "0.15s" }}
           >
-            The last place ideas go before you build.
-          </h1>
-          <p
-            className="text-xl text-white/70 max-w-2xl mb-10 leading-relaxed animate-fade-in"
-            style={{ animationDelay: "0.2s" }}
-          >
-            Stop betting on ideas you shouldn&apos;t build. Verdict delivers your
-            verdict in minutes — before you invest time or capital.
-          </p>
-          <div
-            className="flex flex-col sm:flex-row gap-4 animate-fade-in"
-            style={{ animationDelay: "0.3s" }}
-          >
-            <Link
-              href="/try"
-              className="inline-flex items-center justify-center rounded-lg bg-[var(--accent)] px-8 py-4 text-base font-semibold text-white hover:bg-[var(--accent-hover)] transition-colors"
+            <div className="lg:flex-1 lg:min-w-0">
+              <h1
+                className="text-white animate-fade-in font-display font-semibold tracking-tight"
+                style={{
+                  animationDelay: "0.15s",
+                  fontSize: "clamp(2.25rem, 6vw, 3.75rem)",
+                  lineHeight: 1.1,
+                  letterSpacing: "-0.02em",
+                }}
+              >
+                The last place ideas go before you build.
+              </h1>
+              <p
+                className="text-xl text-white/70 max-w-xl mt-4 leading-relaxed animate-fade-in"
+                style={{ animationDelay: "0.2s" }}
+              >
+                You&apos;ve asked ChatGPT &quot;Should I build this?&quot; We get it. Stop piecing
+                together Google, Reddit, and AI. One verdict. Two minutes. Before you invest time or capital.
+              </p>
+              <div
+                className="flex flex-col sm:flex-row gap-4 mt-6 animate-fade-in"
+                style={{ animationDelay: "0.3s" }}
+              >
+                <Link
+                  href="/try"
+                  className="inline-flex items-center justify-center rounded-lg bg-[var(--accent)] px-8 py-4 text-base font-semibold text-white hover:bg-[var(--accent-hover)] transition-colors"
+                >
+                  See a sample Verdict
+                </Link>
+                <Link
+                  href="/evaluate"
+                  className="inline-flex items-center justify-center rounded-lg border-2 border-white/20 px-8 py-4 text-base font-semibold text-white hover:border-white/40 hover:bg-white/5 transition-all"
+                >
+                  Get the verdict
+                </Link>
+              </div>
+              <p
+                className="mt-5 text-sm text-white/50 animate-fade-in"
+                style={{ animationDelay: "0.35s" }}
+              >
+                For founders who pause before they build.
+              </p>
+            </div>
+            <div
+              className="mt-10 lg:mt-0 lg:flex-shrink-0 lg:w-[380px] xl:w-[420px] lg:translate-x-[20%] animate-fade-in"
+              style={{ animationDelay: "0.5s" }}
             >
-              See a sample Verdict
-            </Link>
-            <Link
-              href="/evaluate"
-              className="inline-flex items-center justify-center rounded-lg border-2 border-white/20 px-8 py-4 text-base font-semibold text-white hover:border-white/40 hover:bg-white/5 transition-all"
-            >
-              Get the verdict
-            </Link>
-          </div>
-          <p
-            className="mt-5 text-sm text-white/50 text-center animate-fade-in"
-            style={{ animationDelay: "0.35s" }}
-          >
-            For founders who don&apos;t build blindly.
-          </p>
-          <div
-            className="mt-16 max-w-xl animate-fade-in"
-            style={{ animationDelay: "0.5s" }}
-          >
-            <p className="text-xs font-medium uppercase tracking-wide text-white/50 mb-3">
-              Sample Verdict
-            </p>
-            <EvaluationProductCard variant="dark" />
+              <p className="text-xs font-medium uppercase tracking-wide text-white/50 mb-3">
+                Sample Verdict
+              </p>
+              <EvaluationProductCard variant="dark" />
+            </div>
           </div>
         </div>
       </div>

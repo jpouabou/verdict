@@ -3,15 +3,15 @@ import { PricingCards } from "@/components/pricing/PricingCards";
 const faqs = [
   {
     q: "What does a Full Verdict include?",
-    a: "A Verdict Score (0–100), verdict band, one-line interpretation, brutal truth analysis, dimension breakdown, and archetype classification.",
+    a: "A Verdict Score (0–100), verdict band, one-line interpretation, brutal truth analysis, dimension breakdown, and archetype classification. Proper evaluation in about 2 minutes.",
   },
   {
-    q: "Can I add-ons later?",
-    a: "Yes. Founder Fit and Playbook can be purchased as add-ons after your initial verdict.",
+    q: "Can I add add-ons later?",
+    a: "Yes. Founder Fit (+$29) and Playbook (+$29) can be purchased after your verdict. Add both for $49 and save $9.",
   },
   {
     q: "How long does it take?",
-    a: "Typically a few minutes. You'll see progress as each dimension is assessed.",
+    a: "About 2 minutes. You'll see progress as each dimension is assessed. No more hunting across Google, Reddit, or ChatGPT.",
   },
 ];
 
@@ -24,7 +24,7 @@ export default function PricingPage() {
             Pricing
           </h1>
           <p className="mt-4 text-lg text-[var(--muted)]">
-            Simple, one-time pricing. No subscriptions.
+            One-time pricing. Verdict $9.99 (reg. $14.99). No subscriptions.
           </p>
         </div>
 

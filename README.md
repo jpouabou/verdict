@@ -2,7 +2,7 @@
 
 **The last place ideas go before you build.**
 
-Verdict is a decision engine that evaluates business ideas using a multi-model reasoning approach and a structured rubric. This repository contains the UI/UX skeleton—a runnable Next.js app with mocked data and no backend logic.
+Verdict is a decision engine that evaluates business ideas using a multi-model reasoning approach and a structured rubric. This repository contains the UI/UX skeleton - a runnable Next.js app with mocked data and no backend logic.
 
 ## Tech Stack
 
@@ -60,7 +60,7 @@ src/
 
 ## UI Only
 
-This app is **UI only**—no backend logic, no real API calls, no Supabase auth, no payments, no database reads/writes. All data is mocked and stored in local state. The structure is designed for later wiring of payments, Supabase, and the evaluation pipeline.
+This app is **UI only** - no backend logic, no real API calls, no Supabase auth, no payments, no database reads/writes. All data is mocked and stored in local state. The structure is designed for later wiring of payments, Supabase, and the evaluation pipeline.
 
 ## Domain
 

@@ -1,6 +1,6 @@
 /**
  * Supabase client placeholder.
- * Configured for future use — no usage yet.
+ * Configured for future use - no usage yet.
  */
 // import { createClient } from "@supabase/supabase-js";
 

@@ -41,7 +41,7 @@ export default function EvaluatingPage() {
                 }`}
               >
                 {i < currentStage ? (
-                  <span className="text-[var(--accent)] font-semibold">—</span>
+                  <span className="text-[var(--accent)] font-semibold">•</span>
                 ) : (
                   <span className="w-4 h-4 rounded-full border-2 border-current shrink-0" />
                 )}

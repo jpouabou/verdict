@@ -57,7 +57,7 @@ function TryContent() {
               See a sample verdict
             </h1>
             <p className="text-white/70">
-              Pick an idea below. We&apos;ll show you what a verdict looks like.
+              Pick an idea. See what a proper evaluation looks like, in 2 minutes.
             </p>
           </div>
           <IdeaPicker ideas={demoIdeas} selectedId={selectedId} variant="dark" />
@@ -75,7 +75,7 @@ function TryContent() {
                   Choose an idea above to see its verdict.
                 </p>
                 <p className="text-sm text-[var(--muted-foreground)]">
-                  Click any of the three ideas to run a sample verdict.
+                  No ChatGPT. No Reddit. One verdict.
                 </p>
               </Card>
             ) : isRunning ? (
@@ -94,7 +94,7 @@ function TryContent() {
                       }`}
                     >
                       {i < currentStage ? (
-                        <span className="text-[var(--accent)] shrink-0 font-semibold">—</span>
+                        <span className="text-[var(--accent)] shrink-0 font-semibold">•</span>
                       ) : (
                         <span className="w-4 h-4 rounded-full border-2 border-current shrink-0" />
                       )}

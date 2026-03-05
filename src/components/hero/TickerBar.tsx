@@ -1,6 +1,8 @@
 "use client";
 
 const items = [
+  "Should I build this?",
+  "ChatGPT",
   "Strong Build",
   "Build with Caution",
   "High Risk",

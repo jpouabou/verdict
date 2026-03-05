@@ -3,9 +3,10 @@ import { Button } from "@/components/ui/Button";
 
 const tiers = [
   {
-    name: "Single Verdict",
-    price: "$49",
-    description: "One full verdict for your idea.",
+    name: "Verdict",
+    price: "$9.99",
+    originalPrice: "$14.99",
+    description: "Know in 2 minutes. One full verdict. Under $10.",
     features: ["Verdict Score (0–100)", "Brutal Truth analysis", "Dimension breakdown", "Archetype classification"],
     cta: "Get your verdict",
     highlighted: true,
@@ -13,13 +14,13 @@ const tiers = [
   {
     name: "Founder Fit add-on",
     price: "+$29",
-    description: "How well you fit this idea.",
+    description: "Are you the right founder for this idea?",
     features: ["Founder-idea alignment score", "Skill gap analysis", "Risk profile"],
   },
   {
     name: "Playbook add-on",
-    price: "+$39",
-    description: "Step-by-step execution guide.",
+    price: "+$29",
+    description: "Your execution roadmap. What to do next.",
     features: ["Prioritized action items", "First 90 days roadmap", "Key milestones"],
   },
 ];
@@ -33,12 +34,21 @@ export function PricingCards() {
           className={tier.highlighted ? "ring-2 ring-[var(--accent)] border-[var(--accent)]/20" : ""}
         >
           <h3 className="text-lg font-semibold text-[var(--foreground)]">{tier.name}</h3>
-          <p className="mt-2 text-2xl font-bold text-[var(--foreground)]">{tier.price}</p>
+          <p className="mt-2 text-2xl font-bold text-[var(--foreground)]">
+            {"originalPrice" in tier && tier.originalPrice ? (
+              <>
+                <span className="text-base font-normal text-[var(--muted)] line-through mr-2">{tier.originalPrice}</span>
+                {tier.price}
+              </>
+            ) : (
+              tier.price
+            )}
+          </p>
           <p className="mt-2 text-sm text-[var(--muted)]">{tier.description}</p>
           <ul className="mt-6 space-y-3">
             {tier.features.map((f) => (
               <li key={f} className="text-sm text-[var(--foreground)] flex items-center gap-2">
-                <span className="text-[var(--accent)]">—</span>
+                <span className="text-[var(--accent)]">•</span>
                 {f}
               </li>
             ))}

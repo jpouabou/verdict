@@ -8,7 +8,7 @@ const features = [
   {
     label: "Submit",
     title: "Share your idea",
-    desc: "Describe your concept in a few sentences. No need to overthink it—we run the verdict on the core.",
+    desc: "Describe your concept in a few sentences. No need to overthink it - we run the verdict on the core.",
     href: "/evaluate",
     Icon: IconUpload,
   },
@@ -22,7 +22,7 @@ const features = [
   {
     label: "Verdict",
     title: "Get your score",
-    desc: "A 0–100 score, the brutal truth, dimension breakdown, and archetype—all in minutes.",
+    desc: "A 0–100 score, the brutal truth, dimension breakdown, and archetype, all in minutes.",
     href: "/try",
     Icon: IconCheckBadge,
   },

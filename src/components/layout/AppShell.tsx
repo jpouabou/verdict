@@ -97,7 +97,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
                 Verdict
               </Link>
               <p className="mt-3 text-sm text-[var(--muted)] max-w-xs">
-                The last place ideas go before you build.
+                Stop asking ChatGPT. Get a verdict.
               </p>
             </div>
             <div className="flex flex-col sm:flex-row gap-8 sm:gap-12">

@@ -1,7 +1,13 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { IconTrendingUp, IconCurrencyDollar, IconUsers, IconGlobe } from "@/components/ui/Icons";
+
+const TARGET_SCORE = 78;
+const SCORE_DURATION_MS = 1518;
+const DIMENSION_STAGGER_MS = 253;
+const DIMENSION_DELAY_MS = 506;
 
 const sampleDimensions = [
   { label: "Market Demand", score: 13, max: 15, Icon: IconTrendingUp },
@@ -16,16 +22,46 @@ interface EvaluationProductCardProps {
 
 export function EvaluationProductCard({ variant = "light" }: EvaluationProductCardProps) {
   const isDark = variant === "dark";
+  const [score, setScore] = useState(0);
+  const [dimensionsVisible, setDimensionsVisible] = useState<boolean[]>(
+    () => sampleDimensions.map(() => false)
+  );
+
+  useEffect(() => {
+    const steps = 60;
+    const stepMs = SCORE_DURATION_MS / steps;
+    const stepValue = TARGET_SCORE / steps;
+    let current = 0;
+    const timer = setInterval(() => {
+      current += stepValue;
+      if (current >= TARGET_SCORE) {
+        setScore(TARGET_SCORE);
+        clearInterval(timer);
+      } else {
+        setScore(Math.floor(current));
+      }
+    }, stepMs);
+    return () => clearInterval(timer);
+  }, []);
+
+  useEffect(() => {
+    const timers: ReturnType<typeof setTimeout>[] = [];
+    sampleDimensions.forEach((_, i) => {
+      timers.push(
+        setTimeout(() => {
+          setDimensionsVisible((prev) => {
+            const next = [...prev];
+            next[i] = true;
+            return next;
+          });
+        }, DIMENSION_DELAY_MS + i * DIMENSION_STAGGER_MS)
+      );
+    });
+    return () => timers.forEach(clearTimeout);
+  }, []);
 
   return (
     <div className="relative">
-      {/* Glow */}
-      {isDark ? (
-        <div className="absolute -inset-4 bg-violet-300/20 rounded-3xl blur-2xl" />
-      ) : (
-        <div className="absolute -inset-8 bg-gradient-to-b from-[var(--accent)]/10 via-transparent to-transparent rounded-3xl blur-3xl" />
-      )}
-      
       {/* Card */}
       <div
         className={`relative rounded-2xl p-8 sm:p-10 shadow-2xl ${
@@ -49,8 +85,8 @@ export function EvaluationProductCard({ variant = "light" }: EvaluationProductCa
               Strong Build
             </h3>
           </div>
-          <div className="font-display text-5xl font-normal tabular-nums text-violet-300">
-            78
+          <div className="font-display text-5xl font-normal tabular-nums text-teal-300 transition-all duration-75">
+            {score}
           </div>
         </div>
         
@@ -64,11 +100,18 @@ export function EvaluationProductCard({ variant = "light" }: EvaluationProductCa
         </p>
 
         <div className="space-y-4">
-          {sampleDimensions.map((dim) => (
-            <div key={dim.label} className="flex items-center gap-4">
+          {sampleDimensions.map((dim, i) => (
+            <div
+              key={dim.label}
+              className={`flex items-center gap-4 transition-all duration-[633ms] ${
+                dimensionsVisible[i]
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-2"
+              }`}
+            >
               <div
                 className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 ${
-                  isDark ? "bg-white/5 text-violet-300" : "bg-[var(--accent)]/10 text-[var(--accent)]"
+                  isDark ? "bg-white/5 text-teal-300" : "bg-[var(--accent)]/10 text-[var(--accent)]"
                 }`}
               >
                 <dim.Icon className="w-4 h-4" />
@@ -86,10 +129,12 @@ export function EvaluationProductCard({ variant = "light" }: EvaluationProductCa
                 }`}
               >
                 <div
-                  className={`h-full rounded-full transition-all duration-700 ${
-                    isDark ? "bg-violet-300" : "bg-[var(--accent)]"
+                  className={`h-full rounded-full transition-all duration-[886ms] ease-out ${
+                    isDark ? "bg-teal-300" : "bg-[var(--accent)]"
                   }`}
-                  style={{ width: `${(dim.score / dim.max) * 100}%` }}
+                  style={{
+                    width: dimensionsVisible[i] ? `${(dim.score / dim.max) * 100}%` : "0%",
+                  }}
                 />
               </div>
               <span
@@ -107,7 +152,7 @@ export function EvaluationProductCard({ variant = "light" }: EvaluationProductCa
           href="/try"
           className={`mt-8 inline-flex items-center gap-2 text-sm font-medium transition-colors ${
             isDark
-              ? "text-violet-300 hover:text-violet-200"
+              ? "text-teal-300 hover:text-teal-200"
               : "text-[var(--accent)] hover:text-[var(--accent-hover)]"
           }`}
         >

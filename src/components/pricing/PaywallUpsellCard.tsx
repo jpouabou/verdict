@@ -22,7 +22,7 @@ export function PaywallUpsellCard({ title, price, description, features }: Paywa
       <ul className="mt-6 space-y-2">
         {features.map((f) => (
           <li key={f} className="text-sm text-[var(--muted)] flex items-center gap-2">
-            <span className="text-[var(--muted-foreground)]">—</span>
+            <span className="text-[var(--muted-foreground)]">•</span>
             {f}
           </li>
         ))}

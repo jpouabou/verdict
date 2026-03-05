@@ -15,7 +15,7 @@ export function ProductShowcase() {
               Your idea. Our verdict.
             </h2>
             <p className="mt-6 text-xl text-[var(--muted)] max-w-2xl mx-auto">
-              A complete assessment in minutes—score, brutal truth, and breakdown.
+              A complete assessment in minutes: score, brutal truth, and breakdown.
             </p>
           </div>
         </RevealOnScroll>

@@ -6,11 +6,19 @@ import { ProgressSteps } from "@/components/evaluation/ProgressSteps";
 import { IdeaForm } from "@/components/evaluate/IdeaForm";
 import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
+import { IconCheckBadge, IconLightbulb } from "@/components/ui/Icons";
 
 const steps = [
   { id: "idea", label: "Idea", status: "current" as const },
   { id: "checkout", label: "Checkout", status: "upcoming" as const },
   { id: "results", label: "Results", status: "upcoming" as const },
+];
+
+const verdictIncludes = [
+  "Verdict Score & band",
+  "Brutal Truth analysis",
+  "Dimension breakdown",
+  "Archetype classification",
 ];
 
 export default function EvaluatePage() {
@@ -36,75 +44,106 @@ export default function EvaluatePage() {
   }));
 
   return (
-    <div className="py-20 sm:py-28">
-      <div className="container-narrow max-w-2xl">
-        <h1 className="font-display text-3xl sm:text-4xl font-normal tracking-tight text-[var(--foreground)] mb-12">
-          Get your verdict
-        </h1>
-
-        <div className="mb-12">
-          <ProgressSteps steps={progressSteps} />
+    <div>
+      {/* Hero */}
+      <section className="bg-black py-16 sm:py-20">
+        <div className="container-narrow">
+          <h1
+            className="font-display text-3xl sm:text-4xl font-normal tracking-tight text-white mb-3"
+            style={{ letterSpacing: "-0.02em" }}
+          >
+            Get your verdict
+          </h1>
+          <p className="text-white/70 max-w-xl">
+            One verdict. Two minutes. Under $10.
+          </p>
         </div>
+      </section>
 
-        {currentStep === 0 && (
-          <div className="space-y-10">
-            <Card>
-              <h2 className="font-display text-xl font-normal text-[var(--foreground)] mb-6">
-                Your idea
-              </h2>
-              <IdeaForm />
-            </Card>
-            <Card>
-              <h2 className="font-display text-xl font-normal text-[var(--foreground)] mb-2">
-                Full Verdict — $49
-              </h2>
-              <p className="text-sm text-[var(--muted)] mb-6">
-                One-time verdict. Includes:
-              </p>
-              <ul className="text-sm text-[var(--foreground)] space-y-2 mb-8">
-                <li className="flex gap-2">
-                  <span className="text-[var(--accent)]">—</span>
-                  Verdict Score & band
-                </li>
-                <li className="flex gap-2">
-                  <span className="text-[var(--accent)]">—</span>
-                  Brutal Truth analysis
-                </li>
-                <li className="flex gap-2">
-                  <span className="text-[var(--accent)]">—</span>
-                  Dimension breakdown
-                </li>
-                <li className="flex gap-2">
-                  <span className="text-[var(--accent)]">—</span>
-                  Archetype classification
-                </li>
-              </ul>
-              <Button onClick={handleContinue} variant="primary">
-                Continue to checkout
-              </Button>
-              <p className="mt-5 text-xs text-[var(--muted)]">
-                Payments coming next.
-              </p>
-            </Card>
+      {/* Content */}
+      <div className="py-12 sm:py-16 bg-white">
+        <div className="container-narrow max-w-4xl">
+          <div className="mb-10">
+            <ProgressSteps steps={progressSteps} />
           </div>
-        )}
 
-        {currentStep === 1 && (
-          <Card>
-            <h2 className="font-display text-xl font-normal text-[var(--foreground)] mb-4">
-              Checkout
-            </h2>
-            <p className="text-sm text-[var(--muted)] mb-4">
-              Full Verdict — $49
-            </p>
-            <p className="text-xs text-[var(--muted)] mb-8">
-              This is a mock checkout. Payments coming next.
-            </p>
-            <Button onClick={handleContinue} variant="primary">
-              Pay & get verdict
-            </Button>
-          </Card>
-        )}
+          {currentStep === 0 && (
+            <div className="grid lg:grid-cols-5 gap-8 lg:gap-12">
+              {/* Form - 3 cols */}
+              <div className="lg:col-span-3">
+                <Card className="p-8">
+                  <div className="flex items-center gap-3 mb-6">
+                    <div className="w-10 h-10 rounded-xl bg-[var(--accent)]/10 flex items-center justify-center text-[var(--accent)]">
+                      <IconLightbulb className="w-5 h-5" />
+                    </div>
+                    <h2 className="font-display text-xl font-normal text-[var(--foreground)]">
+                      Your idea
+                    </h2>
+                  </div>
+                  <IdeaForm />
+                </Card>
+              </div>
+
+              {/* Pricing card - 2 cols */}
+              <div className="lg:col-span-2">
+                <Card className="p-8 border-2 border-[var(--accent)]/20 bg-[var(--accent)]/[0.02] h-fit">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-10 h-10 rounded-xl bg-[var(--accent)]/20 flex items-center justify-center text-[var(--accent)]">
+                      <IconCheckBadge className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <h2 className="font-display text-xl font-normal text-[var(--foreground)]">
+                        Full Verdict
+                      </h2>
+                      <p className="text-2xl font-bold text-[var(--accent)]">
+                        <span className="text-lg font-normal text-[var(--muted)] line-through mr-2">$14.99</span>
+                        $9.99
+                      </p>
+                    </div>
+                  </div>
+                  <p className="text-sm text-[var(--muted)] mb-6">
+                    One-time. Under $10.
+                  </p>
+                  <ul className="space-y-3 mb-8">
+                    {verdictIncludes.map((item) => (
+                      <li key={item} className="flex items-center gap-3 text-sm text-[var(--foreground)]">
+                        <span className="w-5 h-5 rounded-full bg-[var(--accent)]/20 flex items-center justify-center text-[var(--accent)] text-xs font-semibold shrink-0">
+                          ✓
+                        </span>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                  <Button onClick={handleContinue} variant="primary" className="w-full">
+                    Continue to checkout
+                  </Button>
+                  <p className="mt-4 text-xs text-[var(--muted)] text-center">
+                    Payments coming next.
+                  </p>
+                </Card>
+              </div>
+            </div>
+          )}
+
+          {currentStep === 1 && (
+            <div className="max-w-xl">
+              <Card className="p-8">
+                <h2 className="font-display text-xl font-normal text-[var(--foreground)] mb-2">
+                  Checkout
+                </h2>
+                <p className="text-2xl font-bold text-[var(--accent)] mb-2">
+                  Full Verdict - <span className="line-through text-[var(--muted)] font-normal text-lg">$14.99</span> $9.99
+                </p>
+                <p className="text-sm text-[var(--muted)] mb-8">
+                  This is a mock checkout. Payments coming next.
+                </p>
+                <Button onClick={handleContinue} variant="primary" className="w-full">
+                  Pay & get verdict
+                </Button>
+              </Card>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

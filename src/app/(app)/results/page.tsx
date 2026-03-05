@@ -7,7 +7,7 @@ import { PaywallUpsellCard } from "@/components/pricing/PaywallUpsellCard";
 import { sampleUserEvaluation } from "@/lib/mockData";
 
 const guardrails = [
-  "Don't ignore weak dimensions—they're usually the failure mode.",
+  "Don't ignore weak dimensions - they're usually why ideas fail.",
   "The brutal truth is calibrated for founders who want honesty.",
   "Archetype informs strategy; it doesn't replace execution.",
 ];
@@ -49,7 +49,7 @@ export default function ResultsPage() {
           <ul className="space-y-3 text-[var(--muted)] leading-relaxed">
             {guardrails.map((item, i) => (
               <li key={i} className="flex gap-3">
-                <span className="text-[var(--accent)] font-semibold">—</span>
+                <span className="text-[var(--accent)] font-semibold">•</span>
                 {item}
               </li>
             ))}
@@ -57,14 +57,17 @@ export default function ResultsPage() {
         </section>
 
         <section>
-          <h2 className="font-display text-xl font-normal text-[var(--foreground)] mb-6">
+          <h2 className="font-display text-xl font-normal text-[var(--foreground)] mb-2">
             Go deeper
           </h2>
+          <p className="text-sm text-[var(--muted)] mb-6">
+            Add both for $49 (save $9).
+          </p>
           <div className="grid gap-6 sm:grid-cols-2">
             <PaywallUpsellCard
-              title="Founder Fit Multiplier"
+              title="Founder Fit"
               price="+$29"
-              description="How well you fit this idea."
+              description="Are you the right founder for this idea?"
               features={[
                 "Founder-idea alignment score",
                 "Skill gap analysis",
@@ -73,8 +76,8 @@ export default function ResultsPage() {
             />
             <PaywallUpsellCard
               title="Playbook"
-              price="+$39"
-              description="Step-by-step execution guide."
+              price="+$29"
+              description="Your execution roadmap. What to do next."
               features={[
                 "Prioritized action items",
                 "First 90 days roadmap",
